@@ -19,10 +19,17 @@ public class Main {
 			//생성
 			Scanner scanner = new Scanner(System.in);
 
-			System.out.print("명언) ");
-			String cmd = scanner.nextLine();
+			while (true) {
+				System.out.print("명언) ");
+				String cmd = scanner.nextLine();
 
-			System.out.println("입력된 명령어 : %s".formatted(cmd));
+				if (cmd.equals("종료")) {
+					break;
+	}
+}
+
+//System.out.println("입력된 명령어 : %s".formatted(cmd));
+
 			scanner.close();
 
 		}
