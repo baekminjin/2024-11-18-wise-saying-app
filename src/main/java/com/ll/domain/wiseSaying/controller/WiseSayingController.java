@@ -15,7 +15,10 @@ public class WiseSayingController {
 		}
 	}
 
-	public void actionDelete(List<WiseSaying> wiseSayings, int id) {
+	public void actionDelete(List<WiseSaying> wiseSayings, String cmd) {
+		String idStr = cmd.substring(6); //6번째 요소 가져오기
+		int id = Integer.parseInt(idStr); //정수화
+
 		boolean removed = wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == id);
 		//
 		if(removed)

@@ -49,10 +49,8 @@ public class App { //가게의 전체 틀
 
 
 			else if (cmd.startsWith("삭제?id=")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
-			String idStr = cmd.substring(6); //6번째 요소 가져오기
 
-				int id = Integer.parseInt(idStr); //정수화
-				wiseSayingController.actionDelete(wiseSayings, id);
+				wiseSayingController.actionDelete(wiseSayings, cmd);
 			}
 
 
