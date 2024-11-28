@@ -9,13 +9,13 @@ import java.util.Scanner;
 
 public class App { //가게의 전체 틀
 	private final Scanner scanner; //내부에서 사용하면 private
-	private final List<WiseSaying> wiseSayings; //리스트
+	 //리스트
 	private final WiseSayingController wiseSayingController;
 
 	public App() { //열기전 가게 준비물
 		scanner = new Scanner(System.in);
 		wiseSayingController = new WiseSayingController();
-		wiseSayings = new ArrayList<>(); //리스트
+
 		//ArrayList<WiseSaying> 리모콘의 버튼 개수가 더 많아진다. 하지만 버튼은 적을 수록 좋다.
 	}
 
@@ -23,7 +23,7 @@ public class App { //가게의 전체 틀
 	public void run() {
 		System.out.println("== 명언 앱 ==");
 
-		wiseSayingController.makeSampleData(wiseSayings);
+		wiseSayingController.makeSampleData();
 		//등록하기 전 샘플을 보여준다.
 
 		while (true) {
@@ -33,18 +33,18 @@ public class App { //가게의 전체 틀
 				break;
 			}
 			else if (cmd.equals("등록")) {
-				wiseSayingController.actionAdd(scanner, wiseSayings);
+				wiseSayingController.actionAdd(scanner);
 			}
 			else if (cmd.equals("목록")) {
-				wiseSayingController.actionList(wiseSayings);
+				wiseSayingController.actionList();
 			}
 			else if (cmd.startsWith("삭제?id=")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
 
-				wiseSayingController.actionDelete(wiseSayings, cmd);
+				wiseSayingController.actionDelete(cmd);
 			}
 			else if (cmd.startsWith("수정")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
 
-				wiseSayingController.actionModify(scanner, wiseSayings, cmd);
+				wiseSayingController.actionModify(scanner,cmd);
 			}
 		}
 		scanner.close();
