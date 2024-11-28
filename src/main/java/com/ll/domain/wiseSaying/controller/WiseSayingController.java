@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class WiseSayingController {
 	private final List<WiseSaying> wiseSayings;
-    //변수를 유지한 상태에 공유가 안되기 때문에 컨트롤러에서 실행한다.
-	private int lastId; //변하기 때문에 final 안 붙임
+	private int lastId; //변하기 때문에 final 안 붙임 //변수를 유지한 상태에 공유가 안되기 때문에 컨트롤러에서 실행한다.
+	private final Scanner scanner;
 
-
-	public WiseSayingController() {
+	public WiseSayingController(Scanner scanner) { //scanner는 외부에서 전달 받기 때문에
+		this.scanner = scanner;
 		this.wiseSayings = new ArrayList<>();
 		this.lastId=0;
 	}
@@ -29,7 +29,7 @@ public class WiseSayingController {
 		return wiseSaying;
 
 	}
-	public void actionAdd(Scanner scanner) {
+	public void actionAdd() {
 		System.out.print("명언 : ");
 		String content = scanner.nextLine();
 		System.out.print("작가 : ");
@@ -68,7 +68,7 @@ public class WiseSayingController {
 		else System.out.println(id+"번 명언은 존재하지 않습니다.");
 	}
 
-	public void actionModify(Scanner scanner,String cmd) {
+	public void actionModify(String cmd) {
 		String idStr = cmd.substring(6);
 
 		int id = Integer.parseInt(idStr); //정수화
