@@ -1,4 +1,5 @@
 package com.ll.domain.system.controller;
+//시스템 컨트롤
 
 public class SystemController {
 	public void actionExit() {
