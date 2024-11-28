@@ -6,6 +6,38 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WiseSayingController {
+    //변수를 유지한 상태에 공유가 안되기 때문에 컨트롤러에서 실행한다.
+	private int lastId; //변하기 때문에 final 안 붙임
+
+	private WiseSaying addWiseSaying(List<WiseSaying> wiseSayings, String content, String author) {
+
+		int id = ++lastId;
+		//새로운 명언 생성
+		WiseSaying wiseSaying = new WiseSaying(id, content, author);
+
+		wiseSayings.add(wiseSaying);
+
+
+		return wiseSaying;
+
+	}
+	public void actionAdd(Scanner scanner, List<WiseSaying> wiseSayings) {
+		System.out.print("명언 : ");
+		String content = scanner.nextLine();
+		System.out.print("작가 : ");
+		String author = scanner.nextLine();
+		//새로운 명언 wiseSaying저장
+		WiseSaying wiseSaying = addWiseSaying(wiseSayings, content, author);
+		System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.getId()));
+	}
+
+
+	public void makeSampleData(List<WiseSaying> wiseSayings) {
+		addWiseSaying(wiseSayings, "나의 죽음을 적들에게 알리지 말라.", "이순신 장군");
+		addWiseSaying(wiseSayings, "삶이 있는 한 희망은 있다.", "키케로");
+	}
+
+
 	public void actionList(List<WiseSaying> wiseSayings) {
 		System.out.println("번호 / 작가 / 명언");
 		System.out.println("----------------------");
@@ -61,5 +93,7 @@ public class WiseSayingController {
 
 		System.out.println("%d번 명언이 수정되었습니다.".formatted(id));
 	}
+
+
 
 }
