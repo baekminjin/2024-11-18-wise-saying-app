@@ -1,10 +1,10 @@
-package com.ll;
+package com.ll.domain.wiseSaying.entity;
 
 public class WiseSaying {
 	private final int id;
 	private String content;
 	private String author;
-
+//명언 각각 데이터
 	public WiseSaying(int id, String content, String author) {
 		this.id = id;
 		this.content = content;
