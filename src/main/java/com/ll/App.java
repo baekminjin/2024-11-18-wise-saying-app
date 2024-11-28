@@ -46,6 +46,7 @@ public class App { //가게의 전체 틀
 			int id = Integer.parseInt(idStr); //정수화
 
 				actionDelete(id);
+				wiseSayingController.actionDelete(wiseSayings, id);
 			}
 
 			else if (cmd.startsWith("수정")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
@@ -91,14 +92,6 @@ public class App { //가게의 전체 틀
 
 
 
-	private void actionDelete(int id) {
-		boolean removed = wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == id);
-		//
-		if(removed)
-		System.out.println(id+"번 명언을 삭제했습니다.");
-
-		else System.out.println(id+"번 명언은 존재하지 않습니다.");
-	}
 
 	private void actionModify(int id) {
 		WiseSaying foundWiseSaying = null;
