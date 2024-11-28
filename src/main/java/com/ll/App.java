@@ -27,7 +27,7 @@ public class App { //가게의 전체 틀
 	public void run() {
 		System.out.println("== 명언 앱 ==");
 
-		//makeSampleData();
+		makeSampleData();
 		//등록하기 전 샘플을 보여준다.
 
 		while (true) {
@@ -35,19 +35,26 @@ public class App { //가게의 전체 틀
 			String cmd = scanner.nextLine();
 			if (cmd.equals("종료")) {
 				break;
-			} else if (cmd.equals("등록")) {
+			}
+
+
+			else if (cmd.equals("등록")) {
 				actionAdd();
-			} else if (cmd.equals("목록")) {
+			}
+
+
+			else if (cmd.equals("목록")) {
 				wiseSayingController.actionList(wiseSayings);
 			}
+
+
 			else if (cmd.startsWith("삭제?id=")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
 			String idStr = cmd.substring(6); //6번째 요소 가져오기
 
-			int id = Integer.parseInt(idStr); //정수화
-
-				actionDelete(id);
+				int id = Integer.parseInt(idStr); //정수화
 				wiseSayingController.actionDelete(wiseSayings, id);
 			}
+
 
 			else if (cmd.startsWith("수정")) { //완벽하게 일치하지 않더라도 삭제하는 말이면 실행
 				String idStr = cmd.substring(6);
@@ -62,13 +69,13 @@ public class App { //가게의 전체 틀
 
 
 
-	/*
+
 		private void makeSampleData() {
 			addWiseSaying("나의 죽음을 적들에게 알리지 말라.", "이순신 장군");
 			addWiseSaying("삶이 있는 한 희망은 있다.", "키케로");
 		}
 
-	*/
+
 	private WiseSaying addWiseSaying(String content, String author) {
 		int id = ++lastId;
 		//새로운 명언 생성
