@@ -1,7 +1,7 @@
 package com.ll.domain.wiseSaying.entity;
 
 public class WiseSaying {
-	private final int id;
+	private  int id;
 	private String content;
 	private String author;
 //명언 각각 데이터
@@ -9,6 +9,8 @@ public class WiseSaying {
 		this.id = id;
 		this.content = content;
 		this.author = author;
+
+
 	}
 
 	public int getId() {
@@ -23,6 +25,10 @@ public class WiseSaying {
 		return author;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -30,11 +36,6 @@ public class WiseSaying {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-/*
-	@Override
-	public String toString() {
-		return "WiseSaying (id=%d, content=\"%s\", author=\"%s\")".formatted(id, content, author);
-	}
-	*/
+
 
 }

@@ -1,39 +1,42 @@
 package com.ll.domain.wiseSaying.service;
+
 import com.ll.domain.wiseSaying.entity.WiseSaying;
-import java.util.ArrayList;
+import com.ll.domain.wiseSaying.repository.WiseSayingRepository;
+
 import java.util.List;
 import java.util.Optional;
+
 public class WiseSayingService {
-	private final List<WiseSaying> wiseSayings;
-	private int lastId;
+	private final WiseSayingRepository wiseSayingRepository;
+
 	public WiseSayingService() {
-		this.wiseSayings = new ArrayList<>();
-		this.lastId = 0;
+		this.wiseSayingRepository = new WiseSayingRepository();
 	}
 
-	public WiseSaying addWiseSaying(String content, String author) {
-		int id = ++lastId;
-		WiseSaying wiseSaying = new WiseSaying(id, content, author);
-		wiseSayings.add(wiseSaying);
+	public WiseSaying add(String content, String author) {//addwisesaying에서 add로 이름 바꿈
+		WiseSaying wiseSaying = new WiseSaying(0, content, author); //요리 만들기
+
+		wiseSayingRepository.add(wiseSaying); //리포지터리 저장
+
 		return wiseSaying;
 	}
 
 	public List<WiseSaying> findAll() {
-		return wiseSayings;
+		return wiseSayingRepository.findAll();
 	}
 
 	public boolean removeById(int id) {
-		return wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == id);
+		return wiseSayingRepository.removeById(id);
 	}
 
-	public Optional<WiseSaying> findById(int id) { //<Optional>스트림
-		return wiseSayings.stream()
-				.filter(e -> e.getId() == id)
-				.findFirst();
+	public Optional<WiseSaying> findById(int id) {
+		return wiseSayingRepository.findById(id);
 	}
 
-	public void modify(WiseSaying foundWiseSaying, String content, String author) {
-		foundWiseSaying.setContent(content);
-		foundWiseSaying.setAuthor(author);
+	public void modify(WiseSaying wiseSaying, String content, String author) {
+		wiseSaying.setContent(content);
+		wiseSaying.setAuthor(author);
+
+		wiseSayingRepository.modify(wiseSaying);
 	}
 }

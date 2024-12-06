@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 public class App { //가게의 전체 틀
 	private final Scanner scanner; //내부에서 사용하면 private
-	 //리스트
+
 	private final WiseSayingController wiseSayingController;
+
+	//종료 시스템 컨트롤
 	private final SystemController systemController;
 
 	public App() { //열기전 가게 준비물
@@ -49,11 +51,4 @@ public class App { //가게의 전체 틀
 		}
 		scanner.close();
 	}
-
-
-
-
-
-
-
 }
