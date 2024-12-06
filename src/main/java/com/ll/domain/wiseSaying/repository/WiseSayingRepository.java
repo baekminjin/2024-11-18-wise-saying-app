@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 //약속
-public abstract class WiseSayingRepository {
-	public abstract void add(WiseSaying wiseSaying);
+public interface WiseSayingRepository {
+	void add(WiseSaying wiseSaying);
 
-	public abstract List<WiseSaying> findAll();
+	List<WiseSaying> findAll();
 
-	public abstract boolean removeById(int id);
+	boolean removeById(int id);
 
-	public abstract Optional<WiseSaying> findById(int id);
+	Optional<WiseSaying> findById(int id);
 
-	public abstract void modify(WiseSaying wiseSaying);
+	void modify(WiseSaying wiseSaying);
 }
